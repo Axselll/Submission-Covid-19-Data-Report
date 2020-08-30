@@ -1,18 +1,18 @@
 class ResultImg extends HTMLElement {
-    constructor() {
-        super();
-        this._shadowRoot = this.attachShadow({
-            mode: "open"
-        });
-    }
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({
+      mode: "open",
+    });
+  }
 
-    set country(country) {
-        this._country = country;
-        this.render();
-    }
+  set country(country) {
+    this._country = country;
+    this.render();
+  }
 
-    renderError(message) {
-        this._shadowRoot.innerHTML = `
+  renderError(message) {
+    this._shadowRoot.innerHTML = `
         <style>
             .placeholder {
                 font-weight: lighter;
@@ -24,11 +24,11 @@ class ResultImg extends HTMLElement {
             }
         </style>
         `;
-        this._shadowRoot.innerHTML += `<h2 class="placeholder">${message}</h2>`;
-    }
+    this._shadowRoot.innerHTML += `<h2 class="placeholder">${message}</h2>`;
+  }
 
-    render() {
-        this._shadowRoot.innerHTML = `
+  render() {
+    this._shadowRoot.innerHTML = `
         <style>
             * {
                 margin: 0;
@@ -46,11 +46,9 @@ class ResultImg extends HTMLElement {
                 width: 150px;
             }
         </style>
-            <img id="img">
+            <img id="img" src="${this._country}">
         `;
-        const blob = URL.blob();
-        img.src = URL.createObjectURL(blob)
-    }
+  }
 }
 
 customElements.define("result-img", ResultImg);
